@@ -1,0 +1,16 @@
+name: SEPForge CI
+on:
+  push:
+  pull_request:
+jobs:
+  macos-lab01:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check architecture and tools
+        run: |
+          uname -m
+          clang --version
+          python3 --version
+      - name: Build and test safe samples
+        run: make test
